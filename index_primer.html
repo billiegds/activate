@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Primer Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="cignal-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles_primer.css" />
+</head>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<body>
+  <header class="header">
+    <!-- Logo (left aligned) -->
+    <div class="logo">
+      <img src="cignal-logo.png" alt="Logo" id=logo_png />
+    </div>
+
+    <!-- Navigation links (right aligned) -->
+    <ul class="nav-links">
+      <li><a href="#" id="dashboardLink" onclick="showDashboard()">Dashboard</a></li>
+
+    </ul>
+  </header>
+
+  <div class="container my-5" id="contentContainer">
+    <!-- Default content loaded (Dashboard view) -->
+    <div id="dashboardContent" class="fade-in">
+      <iframe
+        src="https://dashboard.docthread.ai/app/dashboards#/view/99c69699-4ea2-4c48-9a40-ed6f689056c5?embed=true&_g=()&hide-filter-bar=true"
+        class="full-size-iframe">
+      </iframe>
+    </div>
+
+  
+    <!-- Table Container with Card Styling (Initially hidden) -->
+    <div class="table-card" id="biddingTable">
+      <h1 class="text-center" id="biddingHeader">BIDDING INFORMATION</h1>
+      <!-- Filter and Search -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Search Bar -->
+        <div class="input-group">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search Bidding..."
+            onkeyup="applyFilters()" />
+        </div>
+        <!-- Category Filter -->
+        <div>
+          <select id="categoryFilter" class="form-select" onchange="applyFilters()">
+            <option value="">All Categories</option>
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Bidding Category</th>
+            <th>Title</th>
+            <th>Procuring Entity</th>
+            <th>Status</th>
+            <th>Date Published</th>
+            <th>Last Updated</th>
+            <th>Closing Date</th>
+            <th>Printable Version</th>
+          </tr>
+        </thead>
+        <tbody id="biddingTableBody">
+          {% for bidding in biddings %}
+          <tr>
+            <td>
+              <a href="https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/SplashBidNoticeAbstractUI.aspx?menuIndex=3&refID={{ bidding.0 }}&DirectFrom=OpenOpp&Type=category&BusCatID=99"
+                target="_blank">
+                {{ bidding.0 }}
+              </a>
+            </td>
+            <td>{{ bidding.1 }}</td>
+            <td>{{ bidding.3 }}</td>
+            <td>{{ bidding.2 }}</td>
+            <td>{{ bidding.13 }}</td>
+            <td>{{ bidding.16 }}</td>
+            <td>{{ bidding.17 }}</td>
+            <td>{{ bidding.18 }}</td>
+            <td><a
+                href="https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid={{ bidding.0 }}"
+                target="_blank">
+                <i class="fas fa-print"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="pagination-container">
+        <!-- Pagination Controls (Initially hidden) -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if prev_page %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ prev_page }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link" aria-hidden="true">&laquo;</span>
+            </li>
+            {% endif %}
+
+            {% for num in page_range %}
+            {% if num > current_page|add:-3 and num < current_page|add:3 %} <li
+              class="page-item {% if num == current_page %}active{% endif %}">
+              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+              </li>
+              {% endif %}
+              {% endfor %}
+
+              {% if next_page %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ next_page }}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&raquo;</span>
+              </li>
+              {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+</body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- External JS -->
+<script src="js/script_primer.js"></script>
+</script>
+</body>
+
+</html>

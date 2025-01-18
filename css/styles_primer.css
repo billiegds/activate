@@ -1,0 +1,366 @@
+body {
+  font-family: "Poppins", sans-serif; /* Apply Poppins font */
+}
+
+h1.text-center {
+  padding-top: 70px;
+  margin-bottom: 10px;
+  font-weight: bold; /* Make the heading bold */
+}
+
+.header .nav-links a:hover {
+  color: #dd1843;
+  text-decoration: underline; /* Add underline effect on hover */
+}
+
+.header .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between items */
+  margin: 0;
+  padding: 0; /* Ensure no default padding on the <ul> */
+}
+
+.header .nav-links a {
+  color: #006684;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 10px 10px; /* Add padding to links */
+}
+
+.header .nav-links a:hover {
+  color: #f1f1f1;
+}
+
+.header .logo {
+  height: 30px; /* Adjust logo size */
+  width: 100px;
+  max-width: 10%;
+  object-fit: contain;
+  flex-shrink: 0; /* Prevent the logo from shrinking */
+}
+img, svg {
+  margin-top: 0px;
+  /* vertical-align: middle; */
+  height: 100%;
+}
+
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100000; /* Ensure it stays above other elements */
+  background-color: #ffffff; /* White background */
+  color: #006684;
+  padding: 3px 10px;
+  display: flex;
+  justify-content: space-between; /* Space between elements */
+  align-items: center; /* Vertically center the logo and other items */
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 5px;
+  height: 60px; /* Fixed height for header */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+}
+
+h1.text-center {
+  padding-top: 70px;
+  margin-bottom: 10px;
+  font-weight: bold; /* Make the heading bold */
+  text-align: center; /* Center the heading */
+}
+
+.header .nav-links a:hover {
+  color: #dd1843;
+  text-decoration: underline; /* Add underline effect on hover */
+}
+
+.header .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between items */
+  margin: 0;
+  padding: 0; /* Ensure no default padding on the <ul> */
+}
+
+.header .nav-links li {
+  padding: 5px 0px; /* Customize padding for each list item */
+
+  display: inline;
+}
+
+.header .nav-links a {
+  color: #006684;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 5px 10px; /* Add padding to links */
+}
+
+.header .nav-links a:hover {
+  color: #f1f1f1;
+}
+
+.header .logo {
+  height: 30px; /* Adjust logo size */
+  width: 100px;
+  max-width: 10%;
+  object-fit: contain;
+  flex-shrink: 0; /* Prevent the logo from shrinking */
+}
+
+img, svg {
+  margin-top: 0px;
+  vertical-align: middle;
+  height: 100%;
+}
+
+/* Table styling */
+.table-card {
+  margin-top: 30px;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+/* Styling for table headers */
+.table th {
+  background-color: #f8f9fa;
+}
+
+/* Pagination styling */
+.pagination .page-item.active .page-link {
+  background-color: #006684; /* Active page background color */
+  border-color: #006684; /* Border color matches the active background */
+}
+
+.pagination .page-item:hover .page-link {
+  background-color: #e70032; /* Hover effect for pages */
+  border-color: #006684;
+  color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #f8f9fa; /* Disabled pages */
+  border-color: #f8f9fa;
+}
+
+.pagination .page-link {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #006684; /* Default link color in red */
+  border: 1px solid #e4e4e4; /* Border matches the red color scheme */
+}
+
+.pagination .page-item.active .page-link:hover {
+  background-color: #006684; /* Slightly darker red for hover effect on active */
+  border-color: white;
+}
+
+/* Ensure content container fills the viewport */
+.contentContainer {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px - 40px); /* Subtract header and footer heights */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Visibility transition for dashboard and table content */
+#dashboardContent, #biddingTable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Visible state */
+#dashboardContent.visible, #biddingTable.visible {
+  opacity: 1;
+}
+
+#dashboardContent, #biddingTable {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* search and filter */
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%; /* Ensures the table takes full width of its container */
+  color: #212529;
+  vertical-align: top;
+  border-color: #dee2e6;
+  align-items: center; /* This works for flex containers, but doesn't apply to tables */
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* iframe */
+
+/* Full-size iframe adjustments */
+.full-size-iframe {
+  z-index: 1;
+  padding-top: 60px;
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjust height based on header */
+  border: none;
+  position: relative;
+}
+
+.input-group{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.form-select {
+  display: block;
+  width: auto;
+  padding: .375rem 
+  vertical-align: middle;
+  height: 200%;
+}
+
+
+/* Table styling */
+.table-card {
+  margin-top: 30px;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+/* Styling for table headers */
+.table th {
+  background-color: #f8f9fa;
+}
+
+/* Pagination styling */
+.pagination .page-item.active .page-link {
+  background-color: #006684; /* Active page background color */
+  border-color: #006684; /* Border color matches the active background */
+}
+
+.pagination .page-item:hover .page-link {
+  background-color: #e70032; /* Hover effect for pages */
+  border-color: #006684;
+  color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #f8f9fa; /* Disabled pages */
+  border-color: #f8f9fa;
+}
+
+.pagination .page-link {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #006684; /* Default link color in red */
+  border: 1px solid #e4e4e4; /* Border matches the red color scheme */
+}
+
+.pagination .page-item.active .page-link:hover {
+  background-color: #006684; /* Slightly darker red for hover effect on active */
+  border-color: white;
+}
+
+
+/* Ensure content container fills the viewport */
+.contentContainer {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px - 40px); /* Subtract header and footer heights */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Visibility transition for dashboard and table content */
+#dashboardContent, #biddingTable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Visible state */
+#dashboardContent.visible, #biddingTable.visible {
+  opacity: 1;
+}
+
+#dashboardContent, #biddingTable {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* search and filter */
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%; /* Ensures the table takes full width of its container */
+  color: #212529;
+  vertical-align: top;
+  border-color: #dee2e6;
+  align-items: center; /* This works for flex containers, but doesn't apply to tables */
+}
+
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* iframe */
+
+/* Full-size iframe adjustments */
+.full-size-iframe {
+  z-index: 1;
+  padding-top: 60px;
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjust height based on header */
+  border: none;
+  position: relative;
+}
+
+.input-group{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.form-select {
+  display: block;
+  width: auto;
+  padding: .375rem 2.25rem .375rem .75rem;
+  margin-right: 20px;
+}
